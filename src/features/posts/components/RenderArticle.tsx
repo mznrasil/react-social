@@ -14,6 +14,8 @@ import BlockQuote from "@tiptap/extension-blockquote";
 import Code from "@tiptap/extension-code";
 import TextStyle from "@tiptap/extension-text-style";
 import CodeBlock from "@tiptap/extension-code-block";
+import TaskList from "@tiptap/extension-task-list";
+import TaskItem from "@tiptap/extension-task-item";
 
 interface RenderArticleProps {
   json: JSONContent | null;
@@ -39,6 +41,8 @@ export function RenderArticle({ json }: RenderArticleProps) {
       TextStyle,
       CodeBlock,
       OrderedList,
+      TaskList,
+      TaskItem,
     ]);
   }, [json]);
 
