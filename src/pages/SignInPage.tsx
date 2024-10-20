@@ -40,6 +40,7 @@ export default function SignInPage() {
             providers={["github"]}
             view="sign_in"
             onlyThirdPartyProviders
+            redirectTo={window.location.origin + "/react/social"}
           />
         </CardContent>
       </Card>

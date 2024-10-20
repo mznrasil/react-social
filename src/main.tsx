@@ -32,9 +32,9 @@ const router = createBrowserRouter(
     },
     ...AUTH_ROUTES,
   ],
-  {
-    basename: "/react-social",
-  },
+  // {
+  //   basename: "/react-social",
+  // },
 );
 
 createRoot(document.getElementById("root")!).render(
