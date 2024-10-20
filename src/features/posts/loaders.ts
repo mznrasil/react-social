@@ -12,6 +12,9 @@ export const postsLoader = async () => {
       like_count,
       repost_count,
       created_at,
+      user_id,
+      reposted_post_id,
+      reposted_post:reposted_post_id (*, profiles (*)),
       profiles (
         id,
         full_name,

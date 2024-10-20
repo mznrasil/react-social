@@ -64,7 +64,7 @@ export type Database = {
           {
             foreignKeyName: "likes_post_id_fkey";
             columns: ["post_id"];
-            isOneToOne: true;
+            isOneToOne: false;
             referencedRelation: "posts";
             referencedColumns: ["id"];
           },
@@ -79,36 +79,46 @@ export type Database = {
       };
       posts: {
         Row: {
-          content: Json;
+          content: Json | null;
           created_at: string;
           id: number;
           image: string | null;
           like_count: number;
           repost_count: number;
-          title: string;
+          reposted_post_id: number | null;
+          title: string | null;
           user_id: string;
         };
         Insert: {
-          content: Json;
+          content?: Json | null;
           created_at?: string;
           id?: number;
           image?: string | null;
           like_count?: number;
           repost_count?: number;
-          title: string;
+          reposted_post_id?: number | null;
+          title?: string | null;
           user_id: string;
         };
         Update: {
-          content?: Json;
+          content?: Json | null;
           created_at?: string;
           id?: number;
           image?: string | null;
           like_count?: number;
           repost_count?: number;
-          title?: string;
+          reposted_post_id?: number | null;
+          title?: string | null;
           user_id?: string;
         };
         Relationships: [
+          {
+            foreignKeyName: "posts_reposted_post_id_fkey";
+            columns: ["reposted_post_id"];
+            isOneToOne: false;
+            referencedRelation: "posts";
+            referencedColumns: ["id"];
+          },
           {
             foreignKeyName: "posts_user_id_fkey";
             columns: ["user_id"];

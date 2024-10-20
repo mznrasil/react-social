@@ -16,11 +16,15 @@ import TextStyle from "@tiptap/extension-text-style";
 import CodeBlock from "@tiptap/extension-code-block";
 
 interface RenderArticleProps {
-  json: JSONContent;
+  json: JSONContent | null;
 }
 
 export function RenderArticle({ json }: RenderArticleProps) {
   const output = useMemo(() => {
+    if (!json) {
+      return "";
+    }
+
     return generateHTML(json, [
       Document,
       Paragraph,

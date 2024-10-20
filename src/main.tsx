@@ -5,10 +5,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AUTH_ROUTES } from "@/features/users/routes.tsx";
 import App from "./App";
 import AppLayout from "@/layouts/AppLayout";
-import { ErrorPage } from "./pages/ErrorPage";
-import { POST_ROUTES } from "./features/posts/routes";
+import { ErrorPage } from "@/pages/ErrorPage";
+import { POST_ROUTES } from "@/features/posts/routes";
 import { Toaster } from "react-hot-toast";
-import { postsLoader } from "./features/posts/loaders";
+import { postsLoader } from "@/features/posts/loaders";
+import DocsPage from "@/pages/DocsPage";
 
 const router = createBrowserRouter(
   [
@@ -21,6 +22,10 @@ const router = createBrowserRouter(
           index: true,
           element: <App />,
           loader: postsLoader,
+        },
+        {
+          path: "/docs",
+          element: <DocsPage />,
         },
         ...POST_ROUTES,
       ],

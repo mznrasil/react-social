@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/features/users/hooks";
-import { WebhookIcon } from "lucide-react";
+import { ScrollTextIcon, WebhookIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { UserButton } from "./UserButton";
 
@@ -18,7 +18,14 @@ export const Navbar = () => {
           </p>
         </Link>
 
-        <div>
+        <div className="flex">
+          <Button variant={"outline"} asChild>
+            <Link to={"/docs"} className="flex items-center gap-1">
+              <ScrollTextIcon className="size-3" />
+              Docs
+            </Link>
+          </Button>
+
           {isAuthenticated ? (
             <UserButton user={session?.user} />
           ) : (
