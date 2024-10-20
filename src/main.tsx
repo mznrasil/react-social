@@ -10,22 +10,27 @@ import { POST_ROUTES } from "./features/posts/routes";
 import { Toaster } from "react-hot-toast";
 import { postsLoader } from "./features/posts/loaders";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <AppLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          index: true,
+          element: <App />,
+          loader: postsLoader,
+        },
+        ...POST_ROUTES,
+      ],
+    },
+    ...AUTH_ROUTES,
+  ],
   {
-    path: "/",
-    element: <AppLayout />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <App />,
-        loader: postsLoader,
-      },
-      ...POST_ROUTES,
-    ],
+    basename: "/react-social",
   },
-  ...AUTH_ROUTES,
-]);
+);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
